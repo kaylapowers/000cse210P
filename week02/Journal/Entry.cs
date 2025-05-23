@@ -1,34 +1,45 @@
 using System;
+
+//namespace JournalSpace;
 // This class represents an entry to list 
 public class Entry
 {
-
-	//public DateTime todaysDate = DateTime.Today;
-	public string _date; //stretch
+	public string _date;//stretch
 	public string _promptText; //propmt given to ask question
-	public string _entryText;  //user submission to journal
-							   //public List<Entry> _entryList = new List<Entry>(); // */
+	public string _entryText;
+	public string _lineEntry;
+	//private string lineEntry;
+	//user submission to journal
+
+	public Entry()
+	{
+
+		_date = getTheEntryDate(); //gets todays date- STRETCH
+		PromptGenerator entryPrompt = new PromptGenerator();
+		//gets a new Prompt for writing
+
+		_promptText = entryPrompt._prompt;
+
+		//Console.WriteLine($"lineEntry is : {_lineEntry}");
 
 
-	//list of entries
-	// Default constructor	
-	// Parameterized constructor
-	//Console.WriteLine($"Date: {_todaysDate}");
-	//Console.WriteLine($"Prompt: {_promptText}");
-	//Console.WriteLine($"Ent Text: {_entryText}");
+	}
 
+	public string getTheEntryDate()
+	{
+		string today = DateTime.Today.ToShortDateString();
+		//Console.WriteLine($"StDate: {today}");
+		return today;
 
-	//public ShowTodaysDate()
-	//{
-	//	Console.WriteLine($"Todays Date is: {todaysDate}");
-	//}
+	}
 
-
-	public void Display()
+	public void Display(string date = "defdt", string prompt = "defPmt", string userentry = "defent")
 	{   //displays en entry
-		//EntryDate _Date: Prompt entryText
-		//ShowTodaysDate(); //should print date
-		//Console.WriteLine("Entry Display");
+
+		Console.WriteLine($"Display Entry is --> {date}- {prompt}: {userentry}");
+		//_lineEntry = _date + " " + _promptText + " " + _entryText;
+		//Console.WriteLine($"Conc: {_lineEntry}");
 		//display 
 	}
+
 }
