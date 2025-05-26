@@ -9,7 +9,7 @@ class Program
 		Console.WriteLine(fract1.GetDecimalValue());
 
 		Fraction fract2 = new Fraction(5);
-		Console.WriteLine(ractf2.GetFractionString());
+		Console.WriteLine(fract2.GetFractionString());
 		Console.WriteLine(fract2.GetDecimalValue());
 
 		Fraction fract3 = new Fraction(3, 4);
