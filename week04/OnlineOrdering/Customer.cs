@@ -1,76 +1,49 @@
-using System.Collections.Generic;
+using System.Net.Sockets;
 
 public class Customer
 {
-	private string _customerName;
-	private int _customerID;
-	private string _streetAddress;
-	private string _city;
-	private string _state;
 
-	private string _country;
-	private static int _nextID = 100001;
-	private int _countryCode = 0;
-	private Address _customerAddress;
-	private Product _productOrder;
-	private Order _order;
+	private static string _customerFirstName;
+	private static string _customerLastName;
+
+	private static string _customerId;
+	private static int nextId = 100001;
+	private static Address _customerAddress;
 
 	//constructors
 
-	public Customer(string customerName, string streetAddress, string city, string state, string country)
+	Customer()
 	{
 
 
-		_customerName = customerName;
-		_streetAddress = streetAddress;
-		_city = city;
-		_state = state;
-		_country = country.ToUpper();
-		_customerID = MakeCustomerId();
-
-		_customerAddress = new Address(_customerName, _streetAddress, _city, _state, _country);
-		_countryCode = LivesInUS();
 	}
-
 
 	//member methods
-
-	private void MakeAnOrder()
+	bool LivesInUS()
 	{
-		_order = new Order(_customerName, _customerID, _countryCode);
+		bool answer = true;
+		//bool answer AddressObj.LivesInUs();
+		return answer;
 	}
 
-	private int LivesInUS()
+	private void DisplayCustomerInfo()
 	{
-		if (_customerAddress.LivesInUS(_country))
-		{ _countryCode = 1; }
-		else
-		{ _countryCode = 0; }
+		Console.WriteLine();
 
-		//Console.WriteLine($"CustomerCL {_countryCode} LivesInUS");
-		return _countryCode;
+		Console.WriteLine($"From Customer Class Display");
+		Console.WriteLine($" Name: {_customerFirstName}  {_customerLastName} ID: {_customerId}");
+		Console.WriteLine($"Address {_customerAddress}");
 	}
 
-	public static int MakeCustomerId()
+	public static string MakeCustomer()
 	{
-		int n = _nextID++;
-		Console.WriteLine($"Customer ID {n}");
 
-		return n;
+		return "";
 	}
 
-	public void OrderAProduct(string productName, double productPrice, int productQuantity)
+	public static int MakeCustomerId(int nextId)
+
 	{
-		//	Console.WriteLine($"Ordering Product-Customer {productName} {productPrice} {productQuantity}");
-		Order.OrderProduct(productName, productPrice, productQuantity);
-
+		return nextId + 1;
 	}
-
-	private void waitABit()
-	{
-		Console.WriteLine($"waiting A bit for return key");
-
-	}
-
 }
-

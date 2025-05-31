@@ -14,7 +14,7 @@ class Program
 
 		customer1.OrderAProduct("orange", .98, 3);
 
-	//	customer1.Order.MakePackingList();
+		//	customer1.Order.MakePackingList();
 
 	}
 
