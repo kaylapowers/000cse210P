@@ -1,52 +1,36 @@
+using System.ComponentModel.DataAnnotations;
+using System.Net;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 
 public class Product
 {
 
-	private readonly int _productId;
-	private static int _productIdStart = 9876;
-	//private static List<Product> productList;
-
-	private static string _productName;
-	private static double _productPrice = 0.0;
+	private static int _productID; // unique product ID for each product
+	private static string _productName = "";
 	private static int _productQuantity = 0;
-	//private static double _totalCostProduct = 0.0;
-	//	private static double _orderCost = 0.0;
-	//private static int _custId;
+	private static decimal _productPrice = 0.0M; // price for one item
 
-	//class constructors
-
-
-	public Product(string productName, double productPrice, int productQuantity)
+	private static int _nextProductID = 1000; // static counter for unique IDs
+	
+	public Product(string productName, decimal productPrice, int productQuantity)
 	{
-
 		_productName = productName;
 		_productPrice = productPrice;
 		_productQuantity = productQuantity;
-		_productId = MakeProductID();
-		double totalCostThisProduct = CostOfThisProduct(_productPrice, _productQuantity);
-		//	DisplayProduct();
+		_productID = GetNextProductID();
+		
 	}
 
-
-	//member methods
-	public static int MakeProductID()
+	public int ProductID
 	{
-		return _productIdStart++;
+		get { return ++_productID; }
 	}
 
-	public double CostOfThisProduct(double productPrice, int productQuantity)
+	private static int GetNextProductID()
 	{
-
-		double costOfThisProd = productPrice * productQuantity;
-		return costOfThisProd;
-
-	}
-	private static void waitABit()
-	{
-		Console.WriteLine($"waiting A bit for return key");
-
-	}
-}
-
+		return ++_nextProductID;
+	} //returns unique product ID
+	
+} 	

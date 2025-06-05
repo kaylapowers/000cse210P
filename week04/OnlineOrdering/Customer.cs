@@ -1,49 +1,45 @@
+using System.Configuration.Assemblies;
+using System.Dynamic;
 using System.Net.Sockets;
 
 public class Customer
 {
-
-	private static string _customerFirstName;
-	private static string _customerLastName;
-
-	private static string _customerId;
-	private static int nextId = 100001;
+	public static bool _USReside; //if customer lives in US
 	private static Address _customerAddress;
+	
+	private string _customerName;
+	private static int _customerID = 435;
+	private string _streetAddress;
+	private string _city;
+	private string _state;
+	private string _country;
 
-	//constructors
+	public string CustomerName { get { return _customerName; } }
+	public int CustomerID { get { return _customerID; } }
 
-	Customer()
+	public string Country { get { return _country; } }
+	public Address CustomerAddress { get { return _customerAddress; } }
+
+
+	// Constructor
+	public Customer(string customerName, string streetAddress, string city, string state, string country)
 	{
 
+		_customerName = customerName.ToUpper();
+		_streetAddress = streetAddress.ToUpper();
+		_city = city.ToUpper();
+		_state = state.ToUpper();
+		_country = country.ToUpper();
+		_customerID = MakeCustomerID(); //get customer ID
+		_customerAddress = new Address(_customerName, _streetAddress, _city, _state, _country);
+		_USReside = _customerAddress.LivesInUS();
+		//_productsList = new List<Product>();
 
 	}
-
-	//member methods
-	bool LivesInUS()
+	private static int MakeCustomerID()
 	{
-		bool answer = true;
-		//bool answer AddressObj.LivesInUs();
-		return answer;
+		return ++_customerID; //increment customer ID
 	}
-
-	private void DisplayCustomerInfo()
-	{
-		Console.WriteLine();
-
-		Console.WriteLine($"From Customer Class Display");
-		Console.WriteLine($" Name: {_customerFirstName}  {_customerLastName} ID: {_customerId}");
-		Console.WriteLine($"Address {_customerAddress}");
-	}
-
-	public static string MakeCustomer()
-	{
-
-		return "";
-	}
-
-	public static int MakeCustomerId(int nextId)
-
-	{
-		return nextId + 1;
-	}
+	
 }
+
