@@ -1,0 +1,6 @@
+//{_refNum}, {_name}, {_description}, {_points}, {_totalAccumulatedPoints}, {_checkBoxVal}, {_numTimesRecorded}, {_numTimesNeeded}, {_status} , {_bonusAtLevel}, {_bonusPoints}
+
+1, one,     desciption a,    10, 0, [], 0, 1, 0/1,   ,
+2, two,     desciption vee,  20, 5, [], 2, 4, 2/4,  5, 80
+3, onethrr, deccsciption a,  10, 0, [], 0, 3, 0/3, 10, 150
+4, tfourty, anotcher,        5,  5, [], 3, 4, 3/4,  5, 25
